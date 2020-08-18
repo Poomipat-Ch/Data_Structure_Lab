@@ -12,10 +12,10 @@ def posfix(inputs):
                 if i == '+':
                        s.push(op1+op2)
                 elif i == '-':
-                    s.push(op1-op2)
+                    s.push(op2-op1)
                 elif i == '*':
                     s.push(op1 * op2)
                 elif i == '/':
-                    s.push(op1/op2)
+                    s.push(op2 / op1)
     return s.pop()
 print(posfix((1,2,3,'+','*')))
