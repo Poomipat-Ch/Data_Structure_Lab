@@ -9,4 +9,7 @@
 * [x] peek Function
 
 ## Queue ##
+* [ ] isEmty Function
+* [ ] size Function
+* [ ] peek Function
 
