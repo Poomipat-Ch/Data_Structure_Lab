@@ -5,10 +5,3 @@
 * [x] isEmty Function
 * [x] size Function
 * [x] peek Function
-
-```python
-import math as m
-
-print(m.pi)
-
-```
