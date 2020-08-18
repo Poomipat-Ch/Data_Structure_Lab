@@ -1,7 +1,7 @@
 class Stack:
 
-    def __init__(self, li = []):
-        self.li = li
+    def __init__(self, li = None):
+        self.li = [] if li == None else li
     
     def push(self,element):
         self.li.append(element)
