@@ -2,9 +2,9 @@
 
 * [x] push Function
 * [x] pop Function
-* [ ] isEmty Function
-* [ ] size Function
-* [ ] peek Function
+* [x] isEmty Function
+* [x] size Function
+* [x] peek Function
 
 ```python
 import math as m
