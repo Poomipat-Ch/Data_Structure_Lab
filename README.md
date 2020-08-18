@@ -3,3 +3,10 @@
 * [x] Push Function
 * [x] Pop Function
 * [ ] isEmty Function
+
+'''
+import math
+
+print(math.pi)
+
+'''
