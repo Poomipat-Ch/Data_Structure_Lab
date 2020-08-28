@@ -1,12 +1,31 @@
-from Stack import *
+class Stack:
+
+    def __init__(self, li = None):
+        self.item_list = [] if li == None else li
+    
+    def push(self,ele):
+        self.item_list.append(ele)
+    
+    def pop(self):
+        return self.item_list.pop()
+
+    def peek(self):
+        return self.item_list[self.size() - 1]
+    
+    def isEmpty(self):
+        return True if self.item_list == [] else False
+
+    def size(self):
+        return len(self.item_list)
+
 
 def infixToPostfix(infixexpr):
-    prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
+    prec = {"^":4, "*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
     opStack = Stack()
     postfixList = ''
 
     for token in infixexpr:
-        if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
+        if (token >= 'a' and token <= 'z') or (token >= 'A' and token <= 'Z'):
             postfixList += token
         elif token == '(':
             opStack.push(token)
@@ -25,6 +44,8 @@ def infixToPostfix(infixexpr):
         postfixList += opStack.pop()
     return postfixList
 
-print(infixToPostfix("10+3*5/(16-4)"))
-print(infixToPostfix("(A+B)*C-(D-E)*(F+G)"))
+if __name__ == "__main__":
+    n = input('Enter Infix : ')
+    print('Postfix :',infixToPostfix(n))
+
             
