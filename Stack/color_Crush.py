@@ -22,7 +22,6 @@ class Stack:
 if __name__ == "__main__":
     inp = input("Enter Input : ").split()
     s = Stack()
-    temp = Stack()
     crush = 0
     i = 0
     finished = False
@@ -33,9 +32,6 @@ if __name__ == "__main__":
             s1, s2, s3 = s.pop(), s.pop(), s.pop()
             if s1 == s2 == s3:
                 crush += 1
-                temp.push(s3)
-                temp.push(s2)
-                temp.push(s1)
             else:
                 s.push(s3)
                 s.push(s2)

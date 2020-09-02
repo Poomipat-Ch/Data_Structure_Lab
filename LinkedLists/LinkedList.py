@@ -42,11 +42,16 @@ class LinkedList:
         self.size_ += 1
 
     def remove(self, item):
-        t = self.before(item)
-        removed = t.next
-        t.next = t.next.next
-        self.size_ -= 1
-        return removed
+        t = self.head
+        if t.data == item:
+            return self.removeHead()
+        else:
+            while t.next != None:
+                if t.next.data == item:
+                    removed = t.next
+                    t.next = t.next.next
+                    self.size_ -= 1
+                    return removed
     
     def removeTail(self):
         t = self.before(self.tail.data)
@@ -88,6 +93,8 @@ class LinkedList:
 
     def isIn(self, item):
         t = self.head
+        if t.data == item:
+            return True
         while t.next != None:
             if t.data == item:
                 return True
