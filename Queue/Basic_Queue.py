@@ -4,6 +4,7 @@ class Queue:
         self.lists = [] if lists == None else lists
     
     def enqueue(self, item):
+        print(f'Add {item} index is {self.size()}')
         self.lists.append(item)
     
     def dequeue(self):
@@ -20,3 +21,16 @@ class Queue:
             return str(self.lists)
         else:
             return 'Empty'
+
+
+if __name__ == "__main__":
+    n = input('Enter Input : ').split(',')
+    q = Queue()
+    
+    for i in n:
+        i = i.split()
+        if i[0] == 'E':
+            q.enqueue(i[1])
+        else:
+            print(f'Pop {q.dequeue()} size in queue is {q.size()}' if not q.isEmpty() else -1)
+    print(f'Number in Queue is :  {q}' if not q.isEmpty() else q)

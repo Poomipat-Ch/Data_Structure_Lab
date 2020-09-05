@@ -73,6 +73,8 @@ class LinkedList:
     
     def nodeAt(self, i):
         t = self.head
+        if i > self.size_:
+            return None
         for j in range(i):
             t = t.next
         return t
