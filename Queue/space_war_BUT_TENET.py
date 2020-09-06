@@ -24,9 +24,40 @@ class Queue:
         else:
             return 'Empty'
 
+def check_bomb(bomb, freeze = None):
+    temp = [bomb.dequeue() for _ in range(bomb.size())]
+    explosive = 0
+    while True:
+        if bomb.size() > 2:
+            a, b, c = bomb.dequeueLast(),bomb.dequeueLast(),bomb.dequeueLast()
+            if a == b == c:
+                explosive += 1
+                if freeze != None:
+                    freeze.enqueue(a)
+            else:
+                bomb.enqueue(c,b,a)
+                if len(temp) > 0:
+                    bomb.enqueue(temp.pop(0))
+        else:
+            if len(temp) > 0:
+                bomb.enqueue(temp.pop(0))
 
+        if len(temp) == 0:
+            lst = [bomb.dequeueLast(),bomb.dequeueLast(),bomb.dequeueLast()]
+            if lst[0] == lst[1] == lst[2] != -1:
+                explosive += 1
+            else:
+                for a in reversed(lst):
+                    if a!= -1:
+                        bomb.enqueue(a)
+                        
+                if len(temp) > 0:
+                    bomb.enqueue(temp.pop(0))
+            break
 
-if __name__ == "__main__":
+    return explosive
+    
+if __name__ == '__main__':
     n = input('Enter Input (Red, Blue) : ').split()
     red = list(n[0])
     blue = list(n[1])
@@ -48,13 +79,16 @@ if __name__ == "__main__":
             else:
                 temp.append(blue.pop(0))
         elif len(blue) > 0:
-            temp.append(blue.pop(0))
+            x = blue.pop(0)
+            if x != -1:
+                temp.append(x)
         else:
             finished = True
 
     while len(temp) > 0:
         blue.append(temp.pop(0))
-    
+
+    blue_bomb += check_bomb(Queue(blue),blue_freeze)
 
     finished = False
     while not finished:
@@ -67,20 +101,26 @@ if __name__ == "__main__":
                             blue_mistake += 1
                             red.pop(0)
                             red.pop(0)
-                            red_explotion.enqueue(red.pop(0))
                         else:
-                            red_explotion.enqueue(red.pop(0),red.pop(0),blue_last,red.pop(0))
+                            red_explotion.enqueue(red.pop(0),red.pop(0),blue_last)
+                        red_explotion.enqueue(red.pop(0))
                     else:
                         red_explosive += 1
                         red.pop(0)
                         red.pop(0)
                         red.pop(0)
                 else:
-                    red_explotion.enqueue(red.pop(0))
+                    a = red.pop(0)
+                    red_explotion.enqueue(a)
             else:
-                red_explotion.enqueue(red.pop(0))
+                x = red.pop(0)
+                if x != -1:
+                    red_explotion.enqueue(x)
         else:
             finished = True
+
+    red_explosive += check_bomb(red_explotion)
+
     print('Red Team :')
     print(red_explotion.size())
     if red_explotion.isEmpty():
