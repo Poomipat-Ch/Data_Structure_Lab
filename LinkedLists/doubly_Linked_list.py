@@ -135,4 +135,3 @@ if __name__ == "__main__":
             ll.append(i[1])
         print(ll)
         print(ll.str_reverse())
-    
