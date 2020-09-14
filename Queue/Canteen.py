@@ -27,8 +27,10 @@ class Queue:
         else:
             return 'Empty'
 
-if __name__ == "__main__":
-    n = input('Enter Input : ').split('/')
+# if __name__ == "__main__":
+def canteenPooM(n):
+    # n = input('Enter Input : ').split('/')
+    result = ''
     emp = dict()
     totalsize = 0
     for i in n[0].split(','):
@@ -42,5 +44,7 @@ if __name__ == "__main__":
             i[0] = emp[int(i[1])]
             q.enqueue(i)
         else:
-            print(q.dequeue())
+            result += ' '+q.dequeue()
+
+    return result
                 

@@ -46,6 +46,8 @@ def check_bomb(bomb, freeze = None):
             lst = [bomb.dequeueLast(),bomb.dequeueLast(),bomb.dequeueLast()]
             if lst[0] == lst[1] == lst[2] != -1:
                 explosive += 1
+                if freeze != None:
+                    freeze.enqueue(a)
             else:
                 for a in reversed(lst):
                     if a!= -1:
@@ -57,10 +59,12 @@ def check_bomb(bomb, freeze = None):
 
     return explosive
     
-if __name__ == '__main__':
-    n = input('Enter Input (Red, Blue) : ').split()
-    red = list(n[0])
-    blue = list(n[1])
+# if __name__ == '__main__':
+#     n = input('Enter Input (Red, Blue) : ').split()
+#     red = list(n[0])
+#     blue = list(n[1])
+def space_war_BUT_TENET(r, b):
+    red, blue = list(r), list(b)
     blue_freeze = Queue()
     red_explotion = Queue()
     blue_mistake = 0
@@ -87,8 +91,8 @@ if __name__ == '__main__':
 
     while len(temp) > 0:
         blue.append(temp.pop(0))
-
     blue_bomb += check_bomb(Queue(blue),blue_freeze)
+    print(blue_freeze.lists)
 
     finished = False
     while not finished:
@@ -120,6 +124,8 @@ if __name__ == '__main__':
             finished = True
 
     red_explosive += check_bomb(red_explotion)
+
+    return (red_explotion.lists, red_explosive, blue_mistake, blue, blue_bomb)
 
     print('Red Team :')
     print(red_explotion.size())
