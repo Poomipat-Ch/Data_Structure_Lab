@@ -1,15 +1,6 @@
-from LinkedList import LinkedList
-
-
-if __name__ == "__main__":
-    ll = LinkedList()
-    ll.append('A')
-    ll.append('B')
-    ll.append('C')
-    print(ll)
-    print(ll.removeHead().data)
-    print(ll.size())
-    ll.addHead('A')
-    print(ll)
-    print(ll.size())
-    print(ll.isIn('A'))
+import time
+import sys
+import os
+start_time = time.time()
+os.system("python "+sys.argv[1]+" "+" ".join(sys.argv[2:]))
+print(f"--- {time.time() - start_time:.3f} seconds ---")

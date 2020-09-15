@@ -111,11 +111,10 @@ class LinkedList:
                 self.head = p
             p.next = p.next.next
             self.size_ -= 1
-        
+
 
 if __name__ == "__main__":
     n = input('Enter Input : ').split(',')
-
     ll = LinkedList()
     for data in n:
         data = data.split()
