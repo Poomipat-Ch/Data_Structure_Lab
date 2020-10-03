@@ -12,6 +12,9 @@ class Stack:
     
     def pop(self):
         return self.items.pop_back()
+
+    def peek(self):
+        return self.items.NodeAt(-1).data
     
     def size(self):
         return self.items.size()
