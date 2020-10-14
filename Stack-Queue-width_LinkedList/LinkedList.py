@@ -101,3 +101,37 @@ class LinkedList:
         for _ in range(index):
             p = p.next
         return p
+
+    def indexAt(self, data):
+        p = self.head.next
+        i = 0
+        while p is not self.tail:
+            if p.data == data:
+                return i
+            i += 1
+            p = p.next
+        return "Not found!!!"
+
+
+    def add(self, data):
+        p = self.head.next
+        while p is not self.tail:
+            if data <= p.data:
+                self.insert(self.indexAt(p.data),data)
+                return
+            p = p.next
+        self.push_back(data)
+
+
+ll = LinkedList()
+ll.add("4")
+ll.add("3")
+ll.add("1")
+ll.add("2")
+print(ll)
+ll.add("0")
+print(ll)
+ll.add("99")
+print(ll)
+ll.add("60")
+print(ll)
