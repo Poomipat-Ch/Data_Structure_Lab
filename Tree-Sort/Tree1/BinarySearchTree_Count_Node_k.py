@@ -9,10 +9,7 @@ class Node:
 
 class BST:
     def __init__(self):
-        self.root = None
         self.size = -1
-        self.printed = False
-        self.graph = dict()
 
     def insert(self, data, cur_root):
         if cur_root is None:
