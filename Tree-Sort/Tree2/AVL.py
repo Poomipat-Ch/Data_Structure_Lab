@@ -22,11 +22,11 @@ class AVL:
         balance = self.get_balance(cur_root)
         if balance > 1 and data < cur_root.left.data:
             return self.rightRotate(cur_root)
-        if balance < -1 and data >= cur_root.right.data:
-            return self.leftRotate(cur_root)
         if balance > 1 and data >= cur_root.left.data:
             cur_root.left = self.leftRotate(cur_root.left)
             return self.rightRotate(cur_root)
+        if balance < -1 and data >= cur_root.right.data:
+            return self.leftRotate(cur_root)
         if balance < -1 and data < cur_root.right.data:
             cur_root.right = self.rightRotate(cur_root.right)
             return self.leftRotate(cur_root)
